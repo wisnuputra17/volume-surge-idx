@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IDX Volume Surge Screener - Real-time stock scanner untuk mendeteksi saham dengan volume spike abnormal">
+<title>Volume Surge IDX — Real-time Screener</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --bg:#0a0e17; --surface:#0f1325; --surface-2:#161b36;
+  --text:#e8ecf3; --text-muted:#8892b0; --text-dim:#6c7a99;
+  --accent:#f59e0b; --accent-2:#10b981; --danger:#ef4444; --border:#1e2647;
+  --font-body:'Inter',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+body { font-family:var(--font-body); background:var(--bg); color:var(--text); min-height:100vh; }
+header { position:sticky; top:0; z-index:100; backdrop-filter:blur(16px); background:rgba(10,14,23,.85); border-bottom:1px solid var(--border); padding:20px 32px; display:flex; align-items:center; justify-content:space-between; }
+header h1 { font-weight:800; font-size:22px; letter-spacing:-.01em; background:linear-gradient(135deg,#e8ecf3 40%,#f59e0b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+header .badge { font-family:var(--font-mono); font-size:11px; background:var(--surface-2); border:1px solid var(--border); padding:4px 10px; border-radius:20px; color:var(--text-muted); }
+main { max-width:1200px; margin:0 auto; padding:32px; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:32px; }
+.stat-card { background:linear-gradient(160deg,var(--surface) 0%,var(--surface-2) 100%); border:1px solid var(--border); border-radius:14px; padding:20px; transition:transform .15s ease; }
+.stat-card:hover { transform:translateY(-2px); border-color:rgba(245,158,11,.3); }
+.stat-card h3 { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-dim); margin-bottom:8px; font-weight:600; }
+.stat-card .value { font-family:var(--font-mono); font-size:28px; font-weight:600; letter-spacing:-.02em; }
+.stat-card .sub { font-size:11px; color:var(--text-muted); margin-top:4px; }
+.table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--border); background:var(--surface); }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead th { text-align:left; padding:14px 16px; font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-dim); font-weight:600; background:rgba(10,14,23,.6); border-bottom:2px solid var(--border); }
+tbody td { padding:12px 16px; border-bottom:1px solid rgba(30,38,71,.5); color:var(--text-muted); }
+tbody tr:hover td { background:rgba(245,158,11,.04); color:var(--text); transition:.1s; }
+.ticker { font-family:var(--font-mono); font-weight:700; color:var(--text); letter-spacing:-.03em; }
+.surge { font-family:var(--font-mono); font-weight:600; }
+.surge.high { color:var(--danger); }
+.surge.med { color:#f97316; }
+.surge.low { color:var(--text-muted); }
+.price { font-family:var(--font-mono); font-weight:500; }
+.price.up { color:var(--accent-2); }
+.price.down { color:var(--danger); }
+.change { font-family:var(--font-mono); font-size:11px; padding:2px 6px; border-radius:6px; background:rgba(255,255,255,.04); }
+.badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; }
+.badge.green { background:rgba(16,185,129,.15); color:#34d399; }
+.badge.red { background:rgba(239,68,68,.15); color:#f87171; }
+.note { background:linear-gradient(90deg,rgba(245,158,11,.08),rgba(245,158,11,.02)); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:20px 24px; margin:28px 0 16px; }
+.note h3 { font-size:15px; font-weight:700; color:var(--accent); margin-bottom:8px; }
+.note p { font-size:13px; color:var(--text-muted); line-height:1.7; }
+.note ul { margin:8px 0 0 20px; font-size:13px; color:var(--text-muted); line-height:1.8; }
+.note ul li { margin-bottom:4px; }
+.footer { text-align:center; padding:40px; font-size:12px; color:var(--text-dim); border-top:1px solid var(--border); }
+.footer a { color:var(--text-muted); text-decoration:none; border-bottom:1px solid var(--border); transition:.2s; }
+.footer a:hover { color:var(--accent); border-color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Volume Surge IDX</h1>
+  <div>
+    <span class="badge">IDX</span>
+    <span class="badge" style="background:rgba(245,158,11,.15);color:#f59e0b;">Real-time</span>
+    <span class="badge" style="background:rgba(255,255,255,.04);color:#8892b0;">Scan: 19 Okt 2026</span>
+  </div>
+</header>
+
+<main>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <h3>Tickers Scanned</h3>
+    <div class="value">117</div>
+    <div class="sub">Universe IDX populer</div>
+  </div>
+  <div class="stat-card">
+    <h3>Volume Surge Found</h3>
+    <div class="value" style="color:var(--danger);">35</div>
+    <div class="sub">≥ 2.0x vs 10-day avg</div>
+  </div>
+  <div class="stat-card">
+    <h3>Top Surge</h3>
+    <div class="value" style="color:var(--danger);">NIRO</div>
+    <div class="sub">11.22x volume spike</div>
+  </div>
+  <div class="stat-card">
+    <h3>Trend</h3>
+    <div class="value">Bearish</div>
+    <div class="sub">33/35 saham turun</div>
+  </div>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>#</th><th>Ticker</th><th>Surge</th><th>Volume</th><th>Price (IDR)</th><th>Daily Change</th><th>Note</th>
+</tr>
+</thead>
+<tbody id="data-body"></tbody>
+</table>
+</div>
+
+<div class="note">
+  <h3>📊 Interpretasi Volume Surge</h3>
+  <p>Volume surge ≥ 2x vs 10-day average berarti aktivitas trading abnormal — bisa karena berita, distribusi institusional, atau pump.</p>
+  <ul>
+    <li><strong>Surge + Price Down (merah)</strong> = kemungkinan besar <strong>selling pressure / distribusi</strong>. Contoh: TLKM (-6.84%), BBRI (-3.03%), BRIS (-6.39%)</li>
+    <li><strong>Surge + Price Up (hijau)</strong> = <strong>buying pressure / akumulasi</strong>. Contoh: BMRI (+0.88%), ADRO (+1.81%), MTEL (+0.50%)</li>
+    <li><strong>Small Cap ekstrem (NIRO 11x, HAIS 8x)</strong> = biasa <strong>goreng</strong> atau event-driven spike — hati-hati dengan illiquidity</li>
+    <li><strong>Banking sector</strong> — BBRI, BMRI, NISP, BRIS, BNGA, BBTN semua surge → kemungkinan news atau sector rotation</li>
+  </ul>
+</div>
+
+<div class="note">
+  <h3>⚡ Metodologi</h3>
+  <p>Data diambil dari Yahoo Finance (`yfinance`) pada 2026-10-19 15:00 WIB. Rata-rata volume dihitung dari 10 hari trading terakhir (tidak termasuk hari ini). Ticker yang tidak ditemukan atau data kosong dikeluarkan dari hasil.</p>
+</div>
+
+</main>
+
+<footer class="footer">
+  Built with <a href="#">IHSG The Dot</a> · Data: Yahoo Finance · Deploy: GitHub Pages · <a href="https://github.com/wisnuputra17/volume-surge-idx">Repo</a>
+</footer>
+
+<script>
+const data = [
+  {ticker:"NIRO",surge:11.22,vol:3714300,price:131,chg:-2.96,note:"Small cap — goreng risk"},
+  {ticker:"HAIS",surge:8.49,vol:2242100,price:147,chg:-4.55,note:"Small cap — goreng risk"},
+  {ticker:"TLKM",surge:4.40,vol:979012300,price:1770,chg:-6.84,note:"Big cap — distribusi?"},
+  {ticker:"BBRI",surge:4.34,vol:1029182600,price:2560,chg:-3.03,note:"Banking — sector surge"},
+  {ticker:"DSNG",surge:4.09,vol:11347000,price:1260,chg:-3.08},
+  {ticker:"NISP",surge:3.93,vol:18008200,price:1080,chg:-3.57},
+  {ticker:"BMRI",surge:3.71,vol:621538400,price:3420,chg:0.88,note:"Banking — hijau"},
+  {ticker:"BRIS",surge:3.71,vol:126906000,price:1025,chg:-6.39},
+  {ticker:"WOOD",surge:3.42,vol:6834200,price:147,chg:-4.55},
+  {ticker:"BNGA",surge:3.36,vol:10712000,price:1480,chg:-1.66},
+  {ticker:"ERAA",surge:3.32,vol:347868300,price:498,chg:-5.14},
+  {ticker:"MTEL",surge:3.25,vol:19941800,price:406,chg:0.50,note:"Hijau"},
+  {ticker:"INKP",surge:3.25,vol:11899500,price:6550,chg:-5.76},
+  {ticker:"DCII",surge:3.14,vol:2200,price:186900,chg:-0.68},
+  {ticker:"BRPT",surge:3.10,vol:261671300,price:1155,chg:-4.55},
+  {ticker:"SCMA",surge:3.03,vol:114287600,price:143,chg:-3.38},
+  {ticker:"BBTN",surge:2.84,vol:46234700,price:855,chg:-3.39},
+  {ticker:"ESSA",surge:2.77,vol:162568000,price:470,chg:-1.26},
+  {ticker:"TBIG",surge:2.68,vol:1320400,price:1170,chg:-1.27},
+  {ticker:"CBDK",surge:2.65,vol:7914400,price:3010,chg:-3.83},
+  {ticker:"BREN",surge:2.61,vol:42523800,price:1825,chg:-1.62},
+  {ticker:"INDF",surge:2.59,vol:17466600,price:6425,chg:-3.02},
+  {ticker:"ADMR",surge:2.59,vol:83367500,price:1095,chg:-6.01},
+  {ticker:"ADRO",surge:2.45,vol:88113000,price:2250,chg:1.81,note:"Hijau"},
+  {ticker:"PWON",surge:2.44,vol:133481400,price:256,chg:-3.03},
+];
+
+const tbody = document.getElementById('data-body');
+data.forEach((d,i) => {
+  const surgeClass = d.surge >= 5 ? 'high' : d.surge >= 3 ? 'med' : 'low';
+  const priceClass = d.chg > 0 ? 'up' : 'down';
+  const emoji = d.chg > 0 ? '🟢' : '🔴';
+  tbody.innerHTML += `
+    <tr>
+      <td>${i+1}</td>
+      <td><span class="ticker">${d.ticker}</span></td>
+      <td><span class="surge ${surgeClass}">${d.surge.toFixed(2)}x</span></td>
+      <td>${d.vol.toLocaleString('id-ID')}</td>
+      <td><span class="price ${priceClass}">Rp ${d.price.toLocaleString('id-ID')}</span></td>
+      <td><span class="price ${priceClass}">${emoji} ${d.chg > 0 ? '+' : ''}${d.chg.toFixed(2)}%</span></td>
+      <td>${d.note ? `<span class="badge ${d.note.includes('Hijau') ? 'green' : 'red'}">${d.note}</span>` : ''}</td>
+    </tr>`;
+});
+</script>
+</body>
+</html>
