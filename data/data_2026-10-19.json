@@ -1,0 +1,250 @@
+{
+  "target_date": "2026-10-19",
+  "scan_time": "2026-10-19T22:00:21.988670",
+  "surge_threshold": 1.5,
+  "surge_count": 38,
+  "green_count": 5,
+  "red_count": 32,
+  "top_surges": [
+    {
+      "ticker": "BBRI",
+      "vol_ratio": 6.98,
+      "volume": 1359912100,
+      "avg_volume": 194712280,
+      "price": 2540.0,
+      "price_change_pct": -3.79
+    },
+    {
+      "ticker": "TLKM",
+      "vol_ratio": 6.39,
+      "volume": 1251403600,
+      "avg_volume": 195750825,
+      "price": 1770.0,
+      "price_change_pct": -6.84
+    },
+    {
+      "ticker": "BRIS",
+      "vol_ratio": 5.61,
+      "volume": 171698000,
+      "avg_volume": 30580290,
+      "price": 1020.0,
+      "price_change_pct": -6.85
+    },
+    {
+      "ticker": "BMRI",
+      "vol_ratio": 5.46,
+      "volume": 779557500,
+      "avg_volume": 142835060,
+      "price": 3360.0,
+      "price_change_pct": -0.88
+    },
+    {
+      "ticker": "ADMR",
+      "vol_ratio": 5.39,
+      "volume": 143451200,
+      "avg_volume": 26628800,
+      "price": 1085.0,
+      "price_change_pct": -6.87
+    },
+    {
+      "ticker": "BRPT",
+      "vol_ratio": 5.04,
+      "volume": 335441300,
+      "avg_volume": 66497015,
+      "price": 1195.0,
+      "price_change_pct": -1.24
+    },
+    {
+      "ticker": "ERAA",
+      "vol_ratio": 4.99,
+      "volume": 440839500,
+      "avg_volume": 88389285,
+      "price": 494.0,
+      "price_change_pct": -5.9
+    },
+    {
+      "ticker": "INKP",
+      "vol_ratio": 4.65,
+      "volume": 17367200,
+      "avg_volume": 3731885,
+      "price": 6500.0,
+      "price_change_pct": -6.47
+    },
+    {
+      "ticker": "PWON",
+      "vol_ratio": 4.06,
+      "volume": 163036300,
+      "avg_volume": 40137035,
+      "price": 254.0,
+      "price_change_pct": -3.79
+    },
+    {
+      "ticker": "INDF",
+      "vol_ratio": 3.79,
+      "volume": 21843500,
+      "avg_volume": 5762495,
+      "price": 6475.0,
+      "price_change_pct": -2.26
+    },
+    {
+      "ticker": "UNVR",
+      "vol_ratio": 3.71,
+      "volume": 47198000,
+      "avg_volume": 12713105,
+      "price": 1325.0,
+      "price_change_pct": -4.68
+    },
+    {
+      "ticker": "SCMA",
+      "vol_ratio": 3.48,
+      "volume": 171307800,
+      "avg_volume": 49262005,
+      "price": 138.0,
+      "price_change_pct": -6.76
+    },
+    {
+      "ticker": "BBNI",
+      "vol_ratio": 3.45,
+      "volume": 140889500,
+      "avg_volume": 40790065,
+      "price": 2960.0,
+      "price_change_pct": -0.34
+    },
+    {
+      "ticker": "KLBF",
+      "vol_ratio": 3.39,
+      "volume": 174699500,
+      "avg_volume": 51494265,
+      "price": 655.0,
+      "price_change_pct": -2.96
+    },
+    {
+      "ticker": "BUKA",
+      "vol_ratio": 3.18,
+      "volume": 316354400,
+      "avg_volume": 99487860,
+      "price": 99.0,
+      "price_change_pct": 1.02
+    },
+    {
+      "ticker": "ANTM",
+      "vol_ratio": 3.15,
+      "volume": 236862100,
+      "avg_volume": 75213290,
+      "price": 2480.0,
+      "price_change_pct": -2.75
+    },
+    {
+      "ticker": "ADRO",
+      "vol_ratio": 3.04,
+      "volume": 112281700,
+      "avg_volume": 36876655,
+      "price": 2210.0,
+      "price_change_pct": 0.0
+    },
+    {
+      "ticker": "HRUM",
+      "vol_ratio": 2.99,
+      "volume": 24271900,
+      "avg_volume": 8126590,
+      "price": 650.0,
+      "price_change_pct": -5.11
+    },
+    {
+      "ticker": "TINS",
+      "vol_ratio": 2.98,
+      "volume": 117566300,
+      "avg_volume": 39492420,
+      "price": 3380.0,
+      "price_change_pct": -4.79
+    },
+    {
+      "ticker": "PTBA",
+      "vol_ratio": 2.69,
+      "volume": 106399200,
+      "avg_volume": 39626055,
+      "price": 2870.0,
+      "price_change_pct": 2.5
+    },
+    {
+      "ticker": "INCO",
+      "vol_ratio": 2.5,
+      "volume": 38837500,
+      "avg_volume": 15564745,
+      "price": 3620.0,
+      "price_change_pct": 4.93
+    },
+    {
+      "ticker": "MTEL",
+      "vol_ratio": 2.48,
+      "volume": 22712400,
+      "avg_volume": 9148935,
+      "price": 402.0,
+      "price_change_pct": -0.5
+    },
+    {
+      "ticker": "ITMG",
+      "vol_ratio": 2.45,
+      "volume": 3396400,
+      "avg_volume": 1388890,
+      "price": 23075.0,
+      "price_change_pct": 0.33
+    },
+    {
+      "ticker": "PGAS",
+      "vol_ratio": 2.34,
+      "volume": 63592800,
+      "avg_volume": 27198220,
+      "price": 1220.0,
+      "price_change_pct": 2.52
+    },
+    {
+      "ticker": "HMSP",
+      "vol_ratio": 2.29,
+      "volume": 42430200,
+      "avg_volume": 18532860,
+      "price": 590.0,
+      "price_change_pct": -3.28
+    },
+    {
+      "ticker": "TOWR",
+      "vol_ratio": 2.29,
+      "volume": 185085000,
+      "avg_volume": 80769315,
+      "price": 374.0,
+      "price_change_pct": -3.61
+    },
+    {
+      "ticker": "EMTK",
+      "vol_ratio": 2.28,
+      "volume": 102768200,
+      "avg_volume": 45104365,
+      "price": 318.0,
+      "price_change_pct": -4.79
+    },
+    {
+      "ticker": "ACES",
+      "vol_ratio": 2.22,
+      "volume": 80615700,
+      "avg_volume": 36309815,
+      "price": 322.0,
+      "price_change_pct": -1.83
+    },
+    {
+      "ticker": "GGRM",
+      "vol_ratio": 2.21,
+      "volume": 2163900,
+      "avg_volume": 977000,
+      "price": 14950.0,
+      "price_change_pct": -2.29
+    },
+    {
+      "ticker": "BBCA",
+      "vol_ratio": 2.19,
+      "volume": 382924400,
+      "avg_volume": 174804220,
+      "price": 4820.0,
+      "price_change_pct": -6.86
+    }
+  ]
+}
